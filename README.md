@@ -21,6 +21,7 @@ Implement the basic frontend layout using React for displaying movies and search
 Deliverable: Basic layout for movie browsing and recommendations.
 
 ########################################################################################################################################
+
 Week 2: API Integration and Core Features
 Ahmed Abdulmajed:
 
