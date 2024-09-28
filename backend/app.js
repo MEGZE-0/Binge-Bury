@@ -1,4 +1,3 @@
-// app.js
 const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
@@ -36,8 +35,9 @@ app.listen(PORT, () => {
   const networkInterfaces = os.networkInterfaces();
   let ipAddress;
 
-  for (const interface in networkInterfaces) {
-    for (const details of networkInterfaces[interface]) {
+  // Replace 'interface' with 'networkInterface'
+  for (const networkInterface in networkInterfaces) {
+    for (const details of networkInterfaces[networkInterface]) {
       if (details.family === 'IPv4' && !details.internal) {
         ipAddress = details.address;
       }

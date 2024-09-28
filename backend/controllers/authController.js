@@ -1,5 +1,5 @@
 const User = require('../models/user'); // Assuming you have a User model
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config(); // Load environment variables from .env file
 // Function to generate a JWT token
