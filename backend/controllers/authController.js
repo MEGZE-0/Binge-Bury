@@ -12,7 +12,7 @@ const generateToken = (userId) => {
 // Create new authentication record (sign up)
 exports.createAuth = async (req, res) => {
   try {
-    const { name, email, password } = req.body; // Include name in registration
+    const { name, email, password } = req.body; 
     const hashedPassword = await bcrypt.hash(password, 10); 
 
     const user = new User({
