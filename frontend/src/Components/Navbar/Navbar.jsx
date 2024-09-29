@@ -8,7 +8,7 @@ return(
 <div>
 <nav className='navbar'> 
     <div className='logo'>
-<h1>Movie Recommendation App</h1>
+<h1><img src="../../../public/logomovie.png" alt="" className='logo'/></h1>
     </div>
     <div className='nav-links'>
 
@@ -17,7 +17,7 @@ return(
 
  <Link to ={'/search'} className='nav-link'>Search</Link> 
 
-      {/* <Link to ={'/filters'} className='nav-link'>Filters</Link>  */}
+      <Link to ={'/filters'} className='nav-link'>Filters</Link> 
      
       <Link to ={'/header'} className='nav-link'>Header</Link> 
      

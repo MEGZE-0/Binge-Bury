@@ -1,9 +1,9 @@
-function Header (){
+function Filters (){
 return(
     <>
-    <h1>Header</h1>
+    <h1>Filters</h1>
     </>
 )
 
 }
-export default Header;
+export default Filters;

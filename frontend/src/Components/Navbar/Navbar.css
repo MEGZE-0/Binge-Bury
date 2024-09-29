@@ -4,7 +4,9 @@ body{
 padding: 0;
 margin: 0%;
 }
-
+.logo{
+    width: 150px;
+}
 .nav-links  :hover{
 color: blue;
 }
@@ -15,10 +17,10 @@ color: blue;
     grid-template-columns: auto 1fr auto ;
     align-items: center;
     /* padding: 0 2rem; */
-    background-color: rgb(59, 158, 137);
+    background-color: #001F3F;
     color: #fcfbfb; 
     height:80px ;
-    box-shadow: 0 4px 6px rgb(32, 82, 71) ;
+    box-shadow: 0 4px 6px #001F3F ;
     width: 100%;
     }
     .nav-links {
