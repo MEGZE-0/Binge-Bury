@@ -1,0 +1,130 @@
+/* Navbar Styles */
+.navbar {
+    background-color: #222;
+    color: #fff;
+    padding: 15px 30px; /* Added padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* For positioning the animation */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+
+/* Title Style */
+.navbar h1 {
+    margin: 0;
+    font-size: 24px; /* Increased font size */
+}
+
+/* Navbar Menu Styles */
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Use flexbox for better alignment */
+    margin: 0; /* Remove default margin */
+}
+
+.navbar li {
+    margin-right: 20px;
+}
+
+.navbar a {
+    color: #00ff00; /* Neon green */
+    text-decoration: none;
+    padding: 8px 12px; /* Padding for clickable area */
+    border-radius: 5px; /* Rounded corners */
+    position: relative; /* For pseudo-element positioning */
+    transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+/* Hover Effect */
+.navbar a:hover {
+    color: #fff; /* Change color on hover */
+}
+
+/* Pseudo-element for hover effect */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px; /* Thickness of the underline */
+    background-color: #00ff00; /* Neon underline */
+    transform: scaleX(0); /* Start with scale 0 */
+    transition: transform 0.3s ease; /* Smooth scale transition */
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1); /* Scale to full width on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items on smaller screens */
+        padding: 10px; /* Adjust padding */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .navbar ul {
+        flex-direction: column; /* Stack list items vertically */
+        margin-top: 10px; /* Space between title and list */
+        display: none; /* Hide the menu initially */
+        width: 100%; /* Full width for list */
+    }
+
+    .navbar-menu.active {
+        display: flex; /* Show menu when active */
+    }
+
+    .navbar li {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 10px; /* Space between list items */
+    }
+
+    .menu-icon {
+        display: flex; /* Show menu icon in mobile view */
+    }
+}
+
+.menu-icon {
+    display: none; /* Hide the menu icon by default */
+    flex-direction: column; /* Stack bars vertically */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.bar {
+    height: 3px; /* Thickness of the bars */
+    width: 25px; /* Width of the bars */
+    background-color: #00ff00; /* Color for bars */
+    margin: 4px 0; /* Spacing between bars */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Active state for open menu */
+.bar.open:nth-child(1) {
+    transform: translateY(7px) rotate(45deg); /* Rotate first bar */
+}
+
+.bar.open:nth-child(2) {
+    opacity: 0; /* Hide middle bar */
+}
+
+.bar.open:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg); /* Rotate last bar */
+}
+
+/* Button Styles */
+.logout-button {
+    background-color: #e74c3c; /* Example color for the logout button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #c0392b; /* Darker shade on hover */
+}

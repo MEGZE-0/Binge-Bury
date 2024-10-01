@@ -1,0 +1,93 @@
+.movie-detail {
+    background-color: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
+    color: #fff; /* White text */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Space below header */
+}
+
+.movie-title {
+    font-size: 36px;
+    color: #0ff; /* Neon cyan */
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    margin-left: 20px; /* Space between title and poster */
+}
+
+.movie-poster {
+    width: 250px; /* Fixed size for poster */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+.movie-info {
+    margin-top: 20px; /* Space below header */
+}
+
+.movie-overview {
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 1.5; /* Improve readability */
+}
+
+.movie-additional-info {
+    margin-top: 20px;
+}
+
+.movie-release-date,
+.movie-rating,
+.movie-runtime {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.movie-genres,
+.movie-cast {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.movie-genres li,
+.movie-cast li {
+    background-color: rgba(255, 255, 255, 0.2); /* Light transparent background for items */
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.related-movies {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.related-movie {
+    width: 150px; /* Set a fixed width for related movie items */
+    margin-right: 15px; /* Space between items */
+    margin-bottom: 20px; /* Space below items */
+    text-align: center; /* Center text under the image */
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent background */
+    border-radius: 10px; /* Round the corners */
+    padding: 10px;
+}
+
+.related-movie-poster {
+    width: 100%; /* Responsive width */
+    border-radius: 5px; /* Round the corners */
+}
+
+.related-movie-title {
+    margin-top: 5px; /* Space between image and title */
+    color: #ff0; /* Bright yellow for related movies */
+    font-weight: bold; /* Make title bold */
+    font-size: 16px;
+}

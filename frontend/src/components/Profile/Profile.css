@@ -1,0 +1,75 @@
+/* src/components/Profile/Profile.css */
+.profile-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a); /* Gradient background */
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4); /* Deeper shadow for depth */
+    color: #f1f1f1; /* Light text color */
+    position: relative;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-image {
+    width: 128px; /* Set a fixed width for the profile image */
+    height: 128px; /* Set a fixed height for the profile image */
+    border-radius: 50%; /* Circular profile image */
+    border: 3px solid #1e90ff; /* Light blue border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Shadow for the image */
+    margin-bottom: 15px; /* Space between the image and text */
+}
+
+.profile-details p {
+    margin: 8px 0;
+    color: #e0e0e0; /* Slightly lighter text for better readability */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.profile-details p:hover {
+    color: #1e90ff; /* Change color on hover */
+}
+
+.profile-details strong {
+    color: #fff; /* Strong labels in white for contrast */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.form-group label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space between label and input */
+    color: #fff; /* Label color */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%; /* Full-width inputs */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners for inputs */
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+    background-color: #1e90ff; /* Button background */
+    color: #fff; /* Button text color */
+    padding: 10px 15px; /* Padding for buttons */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Space above buttons */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.edit-button:hover,
+.save-button:hover,
+.cancel-button:hover {
+    background-color: #1a78cc; /* Darker shade on hover */
+}

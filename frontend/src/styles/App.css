@@ -1,0 +1,70 @@
+/* src/styles/App.css */
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --neon-color: #00ff00;
+    --error-color: #ff0000;
+  }
+  
+  body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar {
+    background-color: var(--bg-color);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .navbar a {
+    color: var(--neon-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    color: var(--text-color);
+  }
+  
+  .auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  }
+  
+  .auth-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--neon-color);
+    border-radius: 5px;
+    background-color: #3a3a3a;
+    color: var(--text-color);
+  }
+  
+  .auth-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--neon-color);
+    color: var(--text-color);
+    cursor: pointer;
+  }
+  
+  .auth-container button:hover {
+    background-color: #00cc00;
+  }
+  
+  .error {
+    color: var(--error-color);
+  }
+  

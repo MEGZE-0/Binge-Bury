@@ -1,14 +1,15 @@
-const mongoose = require('mongoose'); // Import mongoose
+// models/Movie.js
+const mongoose = require('mongoose');
 
 const movieSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    release_date: { type: Date, required: true },
-    rating: { type: Number, default: 0.0 },
-    description: { type: String, required: true },
-    created_at: { type: Date, default: Date.now },
-    updated_at: { type: Date, default: Date.now }
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  genre: { type: String, required: true },
+  releaseDate: { type: Date, required: true },
+  videoUrl: { type: String, required: true },
+  uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
-
-module.exports = Movie; // Export the model
+module.exports = Movie;

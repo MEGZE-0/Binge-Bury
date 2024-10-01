@@ -1,34 +1,64 @@
-// User Controller
-const User = require('../models/user');
+const User = require('../models/User');
 
-// Get all users (for admin purposes)
-exports.getAllUsers = async (req, res) => {
+// Fetch user profile by ID
+exports.getUserProfile = async (req, res) => {
   try {
-    const users = await User.find();
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-// Get user profile (by ID, if needed)
-exports.getUserById = async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id); // Assuming you're passing the user ID in the request
-    if (!user) return res.status(404).json({ error: 'User not found' });
+    const user = await User.findById(req.user._id).select('-password'); // Exclude password
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
     res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
-
-// Update user information (if needed)
-exports.updateUser = async (req, res) => {
+// Update user profile
+exports.updateUserProfile = async (req, res) => {
+    try {
+      const { username, email, bio, profilePicture, location, phone } = req.body;
+  
+      // Log the user ID and body for debugging
+      console.log('Updating user with ID:', req.user._id);
+      console.log('Request body:', req.body);
+  
+      // Perform the update operation
+      const user = await User.findByIdAndUpdate(
+        req.user._id,
+        { 
+          username, 
+          email, 
+          bio, 
+          profilePicture, 
+          location, 
+          phone 
+        },
+        { new: true, runValidators: true } // Return updated user and validate fields
+      ).select('-password'); // Exclude password from the returned user
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Log the updated user object
+      console.log('Updated user:', user);
+  
+      res.status(200).json(user);
+    } catch (err) {
+      // Log the error
+      console.error('Error updating user:', err);
+      res.status(500).json({ error: err.message });
+    }
+  };
+  
+// Delete user profile
+exports.deleteUserProfile = async (req, res) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!updatedUser) return res.status(404).json({ error: 'User not found' });
-    res.status(200).json(updatedUser);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+    const user = await User.findByIdAndDelete(req.user._id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({ message: 'User profile deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };

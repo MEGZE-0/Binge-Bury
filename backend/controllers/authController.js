@@ -1,48 +1,61 @@
-const User = require('../models/user'); // Assuming you have a User model
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-require('dotenv').config(); // Load environment variables from .env file
-// Function to generate a JWT token
-const generateToken = (userId) => {
-    return jwt.sign({ id: userId }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' }); // Token expires in 1 hour
-  };
-  const secretKey = generateToken();
-  console.log(`Your generated jwt key: ${secretKey}`);
-  
-// Create new authentication record (sign up)
-exports.createAuth = async (req, res) => {
+// controllers/authController.js
+const User = require('../models/User');
+
+exports.register = async (req, res) => {
   try {
-    const { name, email, password } = req.body; 
-    const hashedPassword = await bcrypt.hash(password, 10); 
+    const { username, email, password } = req.body;
+
+    // Check for existing user
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
 
     const user = new User({
-      name,         // Save name
+      username,
       email,
-      hashed_password: hashedPassword,
+      password,
+      roles: ['user'], // Set default role to user
     });
 
     await user.save();
-
-    const token = generateToken(user._id); // Generate a token
-    res.status(201).json({ token }); // Return the token in response
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+    const token = user.generateAuthToken();
+    res.status(201).json({ user, token });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
-// User login
-exports.loginAuth = async (req, res) => {
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const { email, password } = req.body;
     const user = await User.findOne({ email });
-
-    if (!user || !(await bcrypt.compare(password, user.hashed_password))) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    const token = generateToken(user._id); // Generate a token
-    res.status(200).json({ token }); // Return the token in response
+    // Use the comparePassword method
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // Generate and return a token if passwords match
+    const token = user.generateAuthToken();
+    res.status(200).json({ token, user }); // Include user data in the response
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+// Fetch user profile by ID
+exports.getUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select('-password'); // Exclude password
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
