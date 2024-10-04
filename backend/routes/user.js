@@ -3,6 +3,11 @@ const {
   getUserProfile,
   updateUserProfile,
   deleteUserProfile,
+  addMovieToWishlist,
+  addMovieToFavorites,
+  getUserFavoritesAndWishlist,
+  fetchUserFavorites,
+  fetchUserWishlist,
 } = require('../controllers/userController');
 const authMiddleware = require('../middleware/authMiddleware'); // Middleware for authentication
 
@@ -16,5 +21,15 @@ router.put('/profile-update', authMiddleware, updateUserProfile); // Keep this t
 
 // Delete user profile
 router.delete('/', authMiddleware, deleteUserProfile); // Adjusted to match the API URL structure
+// Route to add a movie to favorites
+router.post('/favorites', authMiddleware, addMovieToFavorites);
 
+// Route to add a movie to wishlist
+router.post('/wishlist', authMiddleware, addMovieToWishlist);
+router.post('/get-fav-wish', authMiddleware, getUserFavoritesAndWishlist);
+// Route to fetch user favorites
+router.get('/favorites',authMiddleware, fetchUserFavorites);
+
+// Route to fetch user wishlist
+router.get('/wishlist', authMiddleware, fetchUserWishlist);
 module.exports = router;

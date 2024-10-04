@@ -9,6 +9,7 @@ import Register from './components/Auth/Register';
 import MovieList from './components/MovieDetail';
 import MovieDetail from './components/MovieDetail'; // Adjust according to actual filename
 import Profile from './components/Profile/Profile';
+import FavoritesAndWishlist from './components/FavoritesAndWishlist';
 
 import './styles/App.css';
 
@@ -24,9 +25,7 @@ const App = () => {
           <Route path="/movie" element={<MovieList />} />
           <Route path="/movies/:id" element={<MovieDetail />} /> {/* Route for movie details */}
           <Route path="/profile" element={<Profile />} />
-
-
-          {/* Add more routes as needed */}
+          <Route path="/favorites-wishlist" element={<FavoritesAndWishlist />} />
         </Routes>
       </Router>
     </AuthProvider>

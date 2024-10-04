@@ -24,14 +24,15 @@ const Register = () => {
         text: 'You have registered successfully!',
       });
     } catch (err) {
-      // Extract the error message
+      console.error(err); // Log the error for debugging
       const errorMessage = err.response?.data?.message || 'Please try again or check your inputs.';
       Swal.fire({
         icon: 'error',
         title: 'Registration failed',
-        text: errorMessage, // Display the error message from the server
+        text: errorMessage,
       });
-    } finally {
+    }
+     finally {
       setLoading(false); // Stop loading
     }
   };

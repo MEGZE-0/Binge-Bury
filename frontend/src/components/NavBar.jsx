@@ -41,9 +41,10 @@ const toggleMenu = () => {
             <li><Link to="/profile">Profile</Link></li>
           </>
         )}
-        <li><Link to="/favorites">Favorites</Link></li>
         <li><Link to="/movies">Movies</Link></li>
-        <li><Link to="/upload">Upload Movie</Link></li>
+        <li><Link to="/favorites-wishlist">favorites-wishlist</Link></li>
+
+       
       </ul>
     </nav>
   );

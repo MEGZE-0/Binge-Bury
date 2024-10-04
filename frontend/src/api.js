@@ -94,4 +94,56 @@ export const getRecommendations = async (movieId) => {
     return response.data;
 };
 
-// Add more API functions as needed
+// Add movie to favorites
+export const addMovieToFavorites = async (token, movieId) => {
+    const response = await axios.post(`${USER_API_URL}/favorites`, { movieId }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  };
+  
+  // Add movie to wishlist
+  export const addMovieToWishlist = async (token, movieId) => {
+    const response = await axios.post(`${USER_API_URL}/wishlist`, { movieId }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  };
+// Fetch user favorites and wishlist
+export const fetchFavoritesAndWishlist = async (token) => {
+    try {
+        const response = await axios.post(`${USER_API_URL}get-fav-wish`, {}, {
+            headers: {
+                Authorization: `Bearer ${token}`, // Include token for authentication
+            },
+        });
+        return response.data; // Return favorites and wishlist data
+    } catch (error) {
+        console.error('Error fetching favorites and wishlist:', error.response ? error.response.data : error.message);
+        throw error; // Rethrow to handle it in the component
+    }
+};
+
+// Function to fetch user favorites
+export const fetchUserFavorites = async (token) => {
+    const response = await axios.get(`${USER_API_URL}/favorites`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return response.data;
+};
+
+// Function to fetch user wishlist
+export const fetchUserWishlist = async (token) => {
+    const response = await axios.get(`${USER_API_URL}/wishlist`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return response.data;
+};

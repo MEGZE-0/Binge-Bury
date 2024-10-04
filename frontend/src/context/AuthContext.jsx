@@ -25,13 +25,15 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const loginUser = (data) => {
-        setUser(data.user); // Assuming the user object is returned in data.user
+        console.log('Logging in user:', data.user); // Log the user data
+        setUser(data.user); // Set user data
         localStorage.setItem('token', data.token); // Store the token
-        
+    
         // Set token expiration (1 hour from now)
         const expirationTime = new Date().getTime() + 3600000; // 1 hour in milliseconds
         localStorage.setItem('expiration', expirationTime);
     };
+    
 
     const logoutUser = () => {
         setUser(null);

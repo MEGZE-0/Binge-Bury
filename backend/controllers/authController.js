@@ -15,16 +15,18 @@ exports.register = async (req, res) => {
       username,
       email,
       password,
-      roles: ['user'], // Set default role to user
+      roles: ['user'],
     });
 
     await user.save();
     const token = user.generateAuthToken();
     res.status(201).json({ user, token });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Error in registration:', err); // Log the error
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;

@@ -6,9 +6,14 @@ const userSchema = new mongoose.Schema({
     username: { type: String, required: true, trim: true, minlength: 3, maxlength: 30 },
     email: { type: String, required: true, unique: true, lowercase: true, trim: true, match: /.+\@.+\..+/ },
     password: { type: String, required: true, minlength: 6 },
-    favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
-    wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
-    profilePicture: { type: String, default: 'default_profile_pic.png' },
+    favorites: {
+      type: [String], 
+      default: [],
+    },
+    wishlist: {
+      type: [String], 
+      default: [],
+  },    profilePicture: { type: String, default: 'default_profile_pic.png' },
     bio: { type: String, maxlength: 250 },
     location: { type: String },  // Add location field here
     phone: { type: String },     // Add phone field here
