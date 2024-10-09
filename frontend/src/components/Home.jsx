@@ -172,13 +172,13 @@ const Home = () => {
               <div className="movie-actions">
                 <button 
                   onClick={(event) => handleLove(event, movie.id)} 
-                  className={`action-button love-button ${isFavorite(movie.id) ? 'active highlight' : ''}`}
+                  className={`action-button love-button ${isFavorite(movie.id) ? 'active ' : ''}`}
                 >
                   <FontAwesomeIcon icon={faHeart} /> {isFavorite(movie.id) ? 'Loved' : 'Love'}
                 </button>
                 <button 
                   onClick={(event) => handleWishlist(event, movie.id)} 
-                  className={`action-button wishlist-button ${isInWishlist(movie.id) ? 'active highlight' : ''}`}
+                  className={`action-button wishlist-button ${isInWishlist(movie.id) ? 'active ' : ''}`}
                 >
                   <FontAwesomeIcon icon={faBookmark} /> {isInWishlist(movie.id) ? 'In Wishlist' : 'Wishlist'}
                 </button>

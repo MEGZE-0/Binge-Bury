@@ -107,13 +107,9 @@ body {
     position: relative; /* Ensure button is relative to movie card */
 }
 .action-button.active {
-    .action-button.active {
-        background-color: rgba(255, 0, 0, 0.897); /* Semi-transparent bright blue */
-        transform: scale(1.05); /* Slightly larger */
-        color: #fff; /* Change text color */
-    }
-        transform: scale(1.05); /* Slightly larger */
-    color: #fff; /* Change text color */
+    background-color: rgba(255, 0, 0, 0.897); /* Semi-transparent bright blue */
+    transform: scale(1.05); /* Slightly larger */
+    color: #000000; /* Change text color */
 }
 .action-button:hover {
     background-color: #00bfff; /* Lighter cyan on hover */
