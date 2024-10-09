@@ -91,6 +91,8 @@ body {
     display: flex;
     justify-content: space-between; /* Space between buttons */
     margin-top: 10px; /* Space above actions */
+    position: relative; /* Ensure buttons are positioned relative to movie card */
+    z-index: 2; /* Place buttons above the overlay */
 }
 
 .action-button {
@@ -101,13 +103,25 @@ body {
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    z-index: 2; /* Ensure button is above overlay */
+    position: relative; /* Ensure button is relative to movie card */
 }
-
+.action-button.active {
+    .action-button.active {
+        background-color: rgba(255, 0, 0, 0.897); /* Semi-transparent bright blue */
+        transform: scale(1.05); /* Slightly larger */
+        color: #fff; /* Change text color */
+    }
+        transform: scale(1.05); /* Slightly larger */
+    color: #fff; /* Change text color */
+}
 .action-button:hover {
     background-color: #00bfff; /* Lighter cyan on hover */
     transform: scale(1.05); /* Scale effect on hover */
 }
 
+  
+  
 /* Pagination Styles */
 .pagination {
     display: flex;

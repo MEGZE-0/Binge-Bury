@@ -1,5 +1,5 @@
 // controllers/movieController.js
-const Movie = require('../models/Movie');
+const Movie = require('../models/movie');
 const axios = require('axios');
 require('dotenv').config(); // Add this line at the top of your entry file
 
